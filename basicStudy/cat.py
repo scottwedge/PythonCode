@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+# Filename: cat.py
+
+import sys
+
+def readFile(filename):
+    '''Print a file to the standard output'''
+    for line in open(filename, "r"):     # using iterator of file
+        print line,     # Notice the comma at the end
+    #    f = file(filename)
+    #    while True:
+    #        line = f.readline()
+    #        if len(line) == 0:
+    #            break
+    #        print line, # Notice comma
+    #    f.close()
+
+# script starts from here
+if len(sys.argv) < 2:
+    print 'No action specified.'
+    sys.exit()
+
+if sys.argv[1].startswith('--'):
+    option = sys.argv[1][2:]
+    # fetch sys.argv[1] but without the first two characters
+    if option == 'version':
+        print 'Version 1.2'
+    elif option == 'help':
+        print '''\
+This program prints files to the standard output.
+Any number of files can be specified.
+Option include:
+    --version : Prints the version number
+    --help    : Displays this help'''
+    else:
+        print 'Unknown option.'
+else:
+    for filename in sys.argv[1:]:
+        readFile(filename)
