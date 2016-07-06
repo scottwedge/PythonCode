@@ -16,7 +16,7 @@ def count_words(filename):
                 word_list[word] += 1
             else:
                 word_list[word] = 1
-
+    f.close()
     return word_list
 
 if __name__ == '__main__':
