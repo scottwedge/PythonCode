@@ -55,5 +55,8 @@ class ZhihuSpider(scrapy.Spider):
             item['title'] = elem.xpath('a/text()').extract()
             item['link']  = elem.xpath('a/@href').extract()
             items.append(item)
+
+            print(item['title'].decode())
+            print(item['link'].decode())
         # print 'Finish extract data........................'
         return items
